@@ -21,7 +21,7 @@ storage_monitor.sh 1 2 3
 
 # Example
 
-Monitor a directory called `data` every 5 minutes after starting `screen -S run1 -dm command`.
+Monitor */data/* directory every 5 minutes after starting `screen -S run1 -dm command`.
 
 ```sh
 storage_monitor.sh /data/ 300 "run1"
@@ -29,7 +29,9 @@ storage_monitor.sh /data/ 300 "run1"
 
 # Output
 
-A file named `storage_monitor.log` will be created in the current directory that says
+A file named *storage_monitor.log* will be created in the current directory where each line says:
+
+`$current_datetime: Directory size in $DIRECTORY is $dir_size"`
 
 For example:
 
