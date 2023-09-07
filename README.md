@@ -1,4 +1,4 @@
-# storage_monitor
+# storage-monitor
 
 This script will monitor storage in a given directory for the duration of a screen session.
 
