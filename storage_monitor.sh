@@ -15,8 +15,8 @@ LOG_FILE=storage-monitor.log
 # Function to calculate and log directory size
 calculate_directory_size() {
   while true; do
-    # Use 'du' to calculate the size of the directory in human-readable format
-    dir_size=$(du -shG "$DIRECTORY" | awk '{print $1}')
+    # Use 'du' to calculate the size of the directory in KB
+    dir_size=$(du -sBK "$DIRECTORY" | awk '{print $1}')
     
     # Get the current date/time
     current_datetime=$(date +%F\ %T)
