@@ -30,14 +30,14 @@ calculate_directory_size() {
 }
 
 # Check if the specified screen session is running
-if screen -ls | grep -q "$SCREEN_SESSION"; then
-  echo "Monitoring directory size in $DIRECTORY while $SCREEN_SESSION is running..."
+if screen -list | grep -q "$SCREEN_SESSION"; then
+  echo "Monitoring total directory size in $DIRECTORY while $SCREEN_SESSION is running..."
+  # Run the directory size calculation function in the background
+  calculate_directory_size &
 else
   echo "$SCREEN_SESSION is not running."
   exit 1
 fi
 
-# Run the directory size calculation function in the background
-calculate_directory_size &
-
-# Script execution completes when the directory size calculation process exits
+# Wait for the background process to complete
+wait
