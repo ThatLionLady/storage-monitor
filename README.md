@@ -4,34 +4,58 @@ This script will monitor storage in a given directory for the duration of a scre
 
 # Usage
 
+Download script:
+
 ```sh
-# download script
 wget https://github.com/ThatLionLady/storage_monitor/blob/main/storage_monitor.sh
-
-# make script executable
-chmod +x storage_monitor.sh
-
-# run script after starting a screen session
-storage_monitor.sh 1 2 3 
 ```
 
-1. /PATH/TO/DIRECTORY/
-2. Interval in Seconds
-3. `screen` session sockname in quotes
+Make script executable:
+
+```sh
+chmod +x storage_monitor.sh
+```
+
+Run script after starting a screen session:
+
+```sh
+screen
+storage_monitor.sh DIRECTORY INTERVAL SCREEN_SESSION [LOG_FILE]
+#Ctrl-A
+#Ctrl-D
+```
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+|||
+|:-|:-|
+|DIRECTORY|path to monitored directory|
+|INTERVAL|interval in seconds|
+|SCREEN_SESSION|screen session sockname|
+|[LOG_FILE]|optional: output log file name<br>(default: storage-monitor.log)  
+<br>
+
+>***Note:*** *If you plan on closing your terminal during the screen session, the script needs to be run via a second screen. If you plan to keep your terminal open for the duration of the screen session, then it can just be run in the background as follows:*
+
+```sh
+storage_monitor.sh /1/ 2 "3" &
+```
 
 # Example
 
 Monitor */data/* directory every 5 minutes after starting `screen -S run1 -dm command`.
 
 ```sh
-storage_monitor.sh /data/ 300 "run1"
+screen -S monitor -dm storage_monitor.sh /data/ 300 "run1"
 ```
 
 # Output
 
 A file named *storage_monitor.log* will be created in the current directory where each line says:
 
-`$current_datetime: Directory size in $DIRECTORY is $dir_size"`
+`${CURRENT_DATETIME}: Directory size in ${DIRECTORY} is ${DIR_SIZE}"`
 
 For example:
 
