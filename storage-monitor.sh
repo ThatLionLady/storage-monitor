@@ -6,7 +6,7 @@ echo "It is recommended to run this script in screen (https://www.gnu.org/softwa
 echo ""
 
 if [ $# -eq 0 ]; then
-    echo "Usage: storage_monitor.sh DIRECTORY INTERVAL SCREEN_SESSION [LOG_FILE]"
+    echo "Usage: storage-monitor.sh DIRECTORY INTERVAL SCREEN_SESSION [LOG_FILE]"
     echo ""
     echo "DIRECTORY       path to monitored directory (i.e. /data/)"
     echo "INTERVAL        interval in seconds (i.e. 300 for 5 minutes)"
